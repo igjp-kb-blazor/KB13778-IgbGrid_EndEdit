@@ -1,0 +1,59 @@
+﻿<IgbGrid AutoGenerate="false"
+         Id="myGrid1"
+         Data="GridData"
+         PrimaryKey="ID"
+         Name="grid"
+         @ref="grid"
+         Height="500px">
+    <IgbColumn Field="ID"
+               Header="ID"
+               Name="ID"
+               Width="150px"
+               Editable="true">
+    </IgbColumn>
+    <IgbColumn Name="ContactName"
+               Field="ContactName"
+               Header="ContactName"
+               Width="250px"
+               Editable="true">
+    </IgbColumn>
+    <IgbColumn Field="Test"
+               Header="Test"
+               Width="450px"
+               Editable="true">
+    </IgbColumn>
+</IgbGrid>
+
+<button @onclick="TestClick">
+    Test
+</button>
+
+@code {
+    private IgbGrid? grid;
+    private string? rowId;
+    private string? colKey;
+    public readonly CustomersData GridData = new CustomersData();
+
+    private void TestClick()
+    {
+    }
+
+    public class CustomersDataItem
+    {
+        public string? ID { get; set; }
+        public string? ContactName { get; set; }
+        public string? Test { get; set; }
+    }
+
+    public class CustomersData : List<CustomersDataItem>
+    {
+        public CustomersData()
+        {
+            this.Add(new() { ID = @"ALFKI", ContactName = @"Maria Anders", Test = @"test1" });
+            this.Add(new() { ID = @"ANATR", ContactName = @"Ana Trujillo", Test = @"test2" });
+            this.Add(new() { ID = @"ANTON", ContactName = @"Antonio Moreno", Test = @"test3" });
+            this.Add(new() { ID = @"AROUT", ContactName = @"Thomas Hardy", Test = @"test4" });
+            this.Add(new() { ID = @"BERGS", ContactName = @"Christina Berglund", Test = @"test5" });
+        }
+    }
+}
